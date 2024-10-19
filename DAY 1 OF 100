@@ -1,0 +1,92 @@
+Question 1 : 1920. Build Array from Permutation
+Question Link :- https://leetcode.com/problems/build-array-from-permutation/
+
+  Solution :- 
+  class Solution {
+    public int[] buildArray(int[] nums) {
+        
+        int[] ans = new int[nums.length];
+
+        for(int i = 0 ; i < ans.length ; i++)
+        {
+            ans[i] = nums[nums[i]];
+        }
+
+        return ans;
+    }
+}
+
+
+Question 2 : 1929. Concatenation of Array
+Question Link :- https://leetcode.com/problems/concatenation-of-array/description/
+
+Solution :-
+  class Solution {
+    public int[] getConcatenation(int[] nums) {
+        int[] ans = new int[nums.length*2];
+
+        for(int i = 0 ; i < nums.length ; i++)
+        {
+            ans[i] = nums[i];
+            ans[i + nums.length] = nums[i];
+        }
+        return ans;
+    }
+}
+
+
+Question 3 :- 1480. Running Sum of 1d Array
+Question Link :- https://leetcode.com/problems/running-sum-of-1d-array/
+
+Solution :-
+  class Solution {
+    public int[] runningSum(int[] nums) {
+       
+       for(int i = 1 ; i < nums.length ; i++)
+       {
+            nums[i] = nums[i] + nums[i-1];
+       }
+       return nums;
+    }
+}
+
+
+Question 4 :- 1672. Richest Customer Wealth
+Question Link :- https://leetcode.com/problems/richest-customer-wealth/description/
+
+Solution :- 
+  class Solution {
+    public int maximumWealth(int[][] accounts) {
+        int max = 0;
+        for(int i = 0 ; i < accounts.length ; i++)
+        {
+            int count = 0;
+            for(int j = 0 ; j < accounts[i].length ; j++)
+            {
+                count += accounts[i][j];
+            }
+            if(count > max)
+            {
+                max = count;
+            }
+        }
+        return max;
+    }
+}
+
+
+Question 5 :- 1470. Shuffle the Array
+Question Link :- https://leetcode.com/problems/shuffle-the-array/description/
+
+Solution :- 
+  class Solution {
+    public int[] shuffle(int[] nums, int n) {
+        int[] ans = new int[nums.length];
+        for(int i = 0 ; i < n ; i++)
+        {
+            ans[2*i] = nums[i];
+            ans[2*i+1] = nums[i+n];
+        }
+        return ans;
+    }
+}
