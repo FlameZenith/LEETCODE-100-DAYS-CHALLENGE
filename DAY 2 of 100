@@ -1,1 +1,137 @@
+Question 1 : 1431. Kids With the Greatest Number of Candies
 
+Question Link : https://leetcode.com/problems/kids-with-the-greatest-number-of-candies/description/
+
+Solution :
+
+class Solution {
+    public List<Boolean> kidsWithCandies(int[] candies, int extraCandies)
+    {
+        int max = 0;
+
+        for(int i = 0 ; i < candies.length ; i++)
+        {
+            if(max < candies[i])
+            {
+                max = candies[i];
+            }
+        }
+
+        List<Boolean> result = new ArrayList();
+
+        for(int i = 0 ; i < candies.length ; i++)
+        {
+            int candy = candies[i];
+            result.add(candy + extraCandies >= max);
+        }
+
+        return result;
+    }
+}
+
+
+
+Question 2 : 1512. Number of Good Pairs
+
+Question Link : https://leetcode.com/problems/number-of-good-pairs/description/
+
+Solution : 
+
+class Solution {
+    public int numIdenticalPairs(int[] nums) {
+        int count = 0;
+        for(int i = 0 ; i < nums.length ; i++)
+        {
+            for(int j = i + 1 ; j < nums.length ; j++)
+            {
+                if(nums[i] == nums[j] && i < j)
+                {
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+}
+
+
+Question 3 : 1365. How Many Numbers Are Smaller Than the Current Number
+
+Question Link : https://leetcode.com/problems/how-many-numbers-are-smaller-than-the-current-number/description/
+
+Solution : 
+
+class Solution {
+    public int[] smallerNumbersThanCurrent(int[] nums) {
+        int[] ans = new int[nums.length];
+        for(int i = 0 ; i < nums.length ; i++)
+        {
+            int count = 0;
+            for(int j = 0 ; j < nums.length ; j++)
+            {
+                if(nums[i] > nums[j])
+                {
+                    count++;
+                }
+            }
+            ans[i] = count;
+        }
+        return ans;
+    }
+}
+
+
+Question 4 : 1389. Create Target Array in the Given Order
+
+Question Link : https://leetcode.com/problems/create-target-array-in-the-given-order/description/
+
+Solution : 
+
+class Solution {
+    public int[] createTargetArray(int[] nums, int[] index)
+    {
+        int[] target = new int[nums.length];
+
+        for (int i = 0; i < nums.length; i++)
+        {
+            int idx = index[i];
+            for (int j = i; j > idx; j--)
+            {
+                target[j] = target[j - 1];
+            }
+            target[idx] = nums[i];
+        }
+
+        return target;
+    }
+}
+
+
+Question 5 : 1832. Check if the Sentence Is Pangram
+
+Question Link : https://leetcode.com/problems/check-if-the-sentence-is-pangram/
+
+Solution : 
+
+class Solution
+{
+    public boolean checkIfPangram(String sentence)
+    {
+        int[] arr = new int[26];
+
+        for(int i = 0 ; i < sentence.length() ; i++)
+        {
+            arr[sentence.charAt(i)-'a']++;
+        }
+
+        for(int i = 0 ; i < arr.length ; i++)
+        {
+            if(arr[i] < 1)
+            {
+                return false;
+            }
+        }
+        
+        return true;
+    }
+}
