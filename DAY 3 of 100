@@ -1,0 +1,191 @@
+LeetCode:
+
+Question 1 : 1773. Count Items Matching a Rule
+
+Question Link : https://leetcode.com/problems/count-items-matching-a-rule/description/
+
+Solution :
+
+class Solution
+{
+    public int countMatches(List<List<String>> items, String ruleKey, String ruleValue)
+    {
+            int count = 0;
+            int index = 0;
+
+            if(ruleKey.compareTo("type") == 0)
+            {
+                index = 0;
+            }
+
+            else if(ruleKey.compareTo("color") == 0)
+            {
+                index = 1;
+            }
+
+            else if(ruleKey.compareTo("name") == 0)
+            {
+                index = 2;
+            }
+
+            else
+            {
+                return 0;
+            }
+
+            for(int i = 0 ; i < items.size() ; i++)
+            {
+                List<String> item = items.get(i);
+                if(item.get(index).compareTo(ruleValue) == 0)
+                {
+                    count++;
+                }
+            }
+
+            return count;
+    }
+}
+
+
+
+Question 2 : 1732. Find the Highest Altitude
+
+Question Link : https://leetcode.com/problems/find-the-highest-altitude/description/
+
+Solution :
+
+class Solution {
+    public int largestAltitude(int[] gain)
+    {
+        int start = 0;
+        int max = 0;
+       
+       for(int i = 0 ; i < gain.length ; i++)
+       {
+           start = start + gain[i];
+           if(max < start)
+           {
+               max = start;
+           }
+       }
+        return max;  
+    }
+}
+
+
+
+Question 3 : 832. Flipping an Image
+
+Question Link : https://leetcode.com/problems/flipping-an-image/description/
+
+Solution :
+
+class Solution {
+    public int[][] flipAndInvertImage(int[][] image)
+    {
+        for(int i = 0 ; i < image.length ; i++)
+        {
+            int temp = 0;
+            for(int j = 0 ; j < image[i].length / 2 ; j++)
+            {
+                temp = image[i][j];
+                image[i][j] = image[i][image.length - 1 - j];
+                image[i][image.length - 1 - j] = temp;
+            }
+        }
+
+        for(int i = 0 ; i < image.length ; i++)
+        {
+            for(int j = 0 ; j < image[i].length ; j++)
+            {
+                if(image[i][j] == 0)
+                {
+                    image[i][j]++;
+                }
+                else
+                {
+                    image[i][j]--;
+                }
+            }
+        }
+
+        return image;
+    }
+}
+
+
+
+Question 4 : 1252. Cells with Odd Values in a Matrix
+
+Question Link : https://leetcode.com/problems/cells-with-odd-values-in-a-matrix/description/
+
+Solution :
+
+class Solution {
+    public int oddCells(int m, int n, int[][] indices) {
+        int[][] ans = new int[m][n];
+        int a;
+        int odd = 0;
+        for(int i = 0 ; i < indices.length ; i++)
+        {
+            for(int j = 0 ; j < indices[i].length ; j++)
+            {
+                if(j == 0)
+                {
+                    a = indices[i][j];
+                    for(int k = 0 ; k < ans[a].length ; k++)
+                    {
+                        ans[a][k]++;
+                    }
+                }
+
+                else{
+                    a = indices[i][j];
+                    for(int k = 0 ; k < ans.length ; k++)
+                    {
+                        ans[k][a]++;
+                    }
+                }
+            }
+        }
+
+        for(int i = 0 ; i < ans.length ; i++)
+        {
+            for(int j = 0 ; j < ans[i].length ; j++)
+            {
+                if(ans[i][j] % 2 != 0)
+                {
+                    odd++;
+                }
+            }
+        }
+
+        return odd;
+    }
+}
+
+
+
+Question 5 : 1572. Matrix Diagonal Sum
+
+Question Link : https://leetcode.com/problems/matrix-diagonal-sum/description/
+
+Solution :
+
+class Solution {
+    public int diagonalSum(int[][] mat)
+    {
+        int sum = 0;
+        for(int i = 0 ; i < mat.length ; i++)
+        {
+            for(int j = 0 ; j < mat[i].length ; j++)
+            {
+                if(i == j || j == mat.length - i - 1)
+                {
+                    sum = sum + mat[i][j];
+                }
+            }
+        }
+        return sum;
+    }
+}
