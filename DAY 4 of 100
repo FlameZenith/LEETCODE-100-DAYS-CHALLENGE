@@ -1,48 +1,18 @@
-Question 1 : 1295. Find Numbers with Even Number of Digits
-
-Question Link : https://leetcode.com/problems/find-numbers-with-even-number-of-digits/
-
-Solution :
+26. Remove Duplicates from Sorted Array
 
 class Solution {
-    public int findNumbers(int[] nums)
-    {
-        int count = 0;
-        for(int i = 0 ; i < nums.length ; i++)
-        {
-            int num = 0;
-            while(nums[i] > 0)
-            {
-                nums[i] = nums[i] / 10;
-                num++;
-            }
-            if(num % 2 == 0)
-            {
-                count++;
+    public int removeDuplicates(int[] nums) {
+        if (nums.length == 0) return 0;
+
+        int steps = 1; // first element is always unique
+
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] != nums[i - 1]) {
+                nums[steps] = nums[i];
+                steps++;
             }
         }
-        return count;
-    }
-}
 
-Question 2 : 867. Transpose Matrix
-
-Question Link : https://leetcode.com/problems/transpose-matrix/description/
-
-Solution :
-
-class Solution {
-    public int[][] transpose(int[][] matrix)
-    {
-        int[][] out = new int[matrix[0].length][matrix.length];
-
-        for(int i = 0 ; i < matrix.length ; i++)
-        {
-            for(int j = 0 ; j < matrix[i].length ; j++)
-            {
-                out[j][i] = matrix[i][j];
-            }
-        }
-        return out;
+        return steps;
     }
 }
