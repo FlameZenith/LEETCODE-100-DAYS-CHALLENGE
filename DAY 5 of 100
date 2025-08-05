@@ -1,44 +1,11 @@
-Question 1 : 88. Merge Sorted Array
+136. Single Number
 
-Link : https://leetcode.com/problems/merge-sorted-array/description/
-
-Solution :
-
-class Solution
-{
-    public void merge(int[] nums1, int m, int[] nums2, int n)
-    {
-        for(int i = 0 ; i < n ; i++)
-        {
-            nums1[i + m] = nums2[i];
+class Solution {
+    public int singleNumber(int[] nums) {
+        int result = 0;
+        for (int num : nums) {
+            result ^= num;  // XOR each number
         }
-
-        Arrays.sort(nums1);
-    }
-}
-
-Question 2 : 66. Plus One
-
-Link : https://leetcode.com/problems/plus-one/description/ 
-
-Solution :
-
-class Solution
-{
-    public int[] plusOne(int[] digits)
-    {
-        for(int i = digits.length - 1 ; i >= 0 ; i--)
-        {
-            if(digits[i] < 9)
-            {
-                digits[i]++;
-                return digits;
-            }
-            digits[i] = 0;
-        }
-
-        digits = new int[digits.length + 1];
-        digits[0] = 1;
-        return digits;
+        return result;
     }
 }
